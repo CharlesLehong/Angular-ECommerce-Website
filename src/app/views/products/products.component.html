@@ -22,4 +22,5 @@
 <app-product
   *ngFor="let product of productsToDisplay"
   [product]="product"
+  (onAddToCart)="addProduct($event)"
 ></app-product>

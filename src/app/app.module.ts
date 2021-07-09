@@ -16,6 +16,7 @@ import { ProductComponent } from './component/product/product.component';
 import { DropdownComponent } from './component/dropdown/dropdown.component';
 import { LoginCardComponent } from './component/login-card/login-card.component';
 import { RegisterCardComponent } from './component/register-card/register-card.component';
+import { CartCardComponent } from './component/cart-card/cart-card.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { RegisterCardComponent } from './component/register-card/register-card.c
     ProductComponent,
     DropdownComponent,
     LoginCardComponent,
-    RegisterCardComponent
+    RegisterCardComponent,
+    CartCardComponent
   ],
   imports: [
     BrowserModule,

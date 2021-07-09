@@ -3,6 +3,7 @@ import { Product } from 'src/app/interfaces/Product';
 import { ProductCategory } from 'src/app/interfaces/ProductCategory';
 import { ProductDepartment } from 'src/app/interfaces/ProductDepartment';
 import { ProductsService } from '../../services/products.service';
+import { CartService } from '../../services/cart.service';
 
 @Component({
   selector: 'app-products',
@@ -17,7 +18,8 @@ export class ProductsComponent implements OnInit {
   selectedDepartmentId?: number = undefined;
   selectedCategoryId?: number = undefined;
 
-  constructor(private productsService: ProductsService) { }
+  constructor(private productsService: ProductsService, private cartService: CartService) {
+   }
 
   ngOnInit(): void {
     this.productsService.getProducts()
@@ -33,7 +35,7 @@ export class ProductsComponent implements OnInit {
       .subscribe(departments => this.productDepartments = departments);
   }
 
-  selectFilter(filterDetails: any){
+  selectFilter(filterDetails: any): void{
     
     if(filterDetails?.type === 'Department' && filterDetails.itemId === 0){
       this.selectedDepartmentId = undefined;
@@ -72,6 +74,9 @@ export class ProductsComponent implements OnInit {
             this.selectedDepartmentId));
       return;
     }
-  }
 
+  }
+  addProduct(productId: number): void {
+    this.cartService.addToCart(productId);
+  }
 }
