@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Product } from 'src/app/interfaces/Product';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
@@ -11,6 +11,8 @@ import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 export class ProductComponent implements OnInit {
   faHeart = faHeart;
   faShoppingCart = faShoppingCart;
+  @Output() onAddToCart = new EventEmitter();
+
   @Input() product: Product = {
     id: 0,
     name: "",
@@ -28,4 +30,7 @@ export class ProductComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  addProduct(productId?: number){
+    this.onAddToCart.emit(productId);
+  }
 }

@@ -22,6 +22,7 @@ a {
 }
 
 .navbar li a {
+  position: relative;
   display: block;
   padding: 20px 20px;
   text-decoration: none;
@@ -112,6 +113,22 @@ a {
 .navbar .menu-btn:checked ~ .menu-icon:not(.steps) .navicon:before,
 .navbar .menu-btn:checked ~ .menu-icon:not(.steps) .navicon:after {
   top: 0;
+}
+
+a span {
+  position: absolute;
+  top: 10px;
+  left: 34%;
+  background-color: #fbb72c;
+  width: 17px;
+  height: 17px;
+  color: white;
+  font-size: 8px;
+  font-weight: bold;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 @media (min-width: 48em) {

@@ -1,1 +1,47 @@
-<p>cart works!</p>
+<div class="cart-page">
+  <table>
+    <tr>
+      <th>Product</th>
+      <th>Quantity</th>
+      <th>Subtotal</th>
+    </tr>
+    <tr *ngFor="let cartProduct of cart">
+      <td>
+        <div class="cart-info">
+          <img src="{{ getProduct(cartProduct.id).imgUrl }}" alt="" />
+          <div>
+            <p>{{ getProduct(cartProduct.id).name }}</p>
+            <small>Price R{{ getProduct(cartProduct.id).price }}</small>
+            <br />
+            <span (click)="removeFromCart(cartProduct.id)">Remove</span>
+          </div>
+        </div>
+      </td>
+      <td>
+        <input
+          type="number"
+          value="{{ cartProduct.quantity }}"
+          (change)="updateQuantity($event, cartProduct.id)"
+        />
+      </td>
+      <td>R{{ getProduct(cartProduct.id).price * cartProduct.quantity }}</td>
+    </tr>
+  </table>
+
+  <div class="total-price" *ngIf="cart.length > 0">
+    <table>
+      <tr>
+        <td>Subtotal</td>
+        <td>R{{ getProductsTotal() }}</td>
+      </tr>
+      <tr>
+        <td>Tax</td>
+        <td>R{{ (0.15 * getProductsTotal()).toFixed(2) }}</td>
+      </tr>
+      <tr>
+        <td>Total</td>
+        <td>R{{ getProductsTotal() * 0.15 + getProductsTotal() }}</td>
+      </tr>
+    </table>
+  </div>
+</div>
